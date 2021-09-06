@@ -3,7 +3,7 @@ const app = express();
 const mysql = require('mysql');
 const cors = require('cors');
 require('dotenv').config();
-const PORT = process.env.PORT;
+const PORT = process.env.DB_PORT;
 
 app.use(cors());
 app.use(express.json());
@@ -28,7 +28,7 @@ app.get('/todolist', (req, res) => {
 ////////// POST
 
 app.post('/todolist', (req, res) => {
-    mystery.query('SELECT * FROM todo-list', (err, result) => {
+    mystery.query('INSERT INTO todo-list (zadanie, priorytet, id)', (err, result) => {
         if (err) {
             console.log(err);
         } else {

@@ -10,7 +10,7 @@
   },
   "scripts": {
     "start": "node api.js",
-    "build": "react-scripts build"
+    "devStart": "nodemon api.js"
   },
   "eslintConfig": {
     "extends": [
