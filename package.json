@@ -13,12 +13,6 @@
     "start": "node api.js",
     "devStart": "nodemon api.js"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
   "browserslist": {
     "production": [
       ">0.2%",

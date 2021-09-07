@@ -15,7 +15,7 @@ const mystery = mysql.createConnection({
 });
 
 /////////// GET
-app.get('/todolist', (req, res) => {
+app.get('/', (req, res) => {
     mystery.query('SELECT * FROM `todo-list`', (err, result) => {
         if (err) {
             console.log(err);
@@ -27,7 +27,7 @@ app.get('/todolist', (req, res) => {
 
 ////////// POST
 
-app.post('/todolist', (req, res) => {
+app.post('/', (req, res) => {
     mystery.query('INSERT INTO `todo-list` (zadanie, priorytet, id)', (err, result) => {
         if (err) {
             console.log(err);
