@@ -36,3 +36,26 @@
     border-radius: 12px;
 }
 
+/***************** Smaller Desktop *****************/
+
+@media screen and (min-width:980px) and (max-width: 1500px) {
+    .task-entry-view {
+        height: 100px;
+    }
+}
+
+/***************** TABLET *****************/
+
+@media screen and (min-width:765px) and (max-width: 980px) {
+    .task-entry-view {
+        height: 100px;
+    }
+}
+
+/***************** MOBILE *****************/
+
+@media screen and (max-width: 765px) {
+    .task-entry-view {
+        height: 80px;
+    }
+}
