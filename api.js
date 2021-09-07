@@ -27,8 +27,9 @@ app.get('/', (req, res) => {
 
 ////////// DELETE
 
-app.post('/', (req, res) => {
-    mystery.query('DELETE FROM `todo-list` WHERE id=?', (err, result) => {
+app.delete('/{id}', (req, res) => {
+    const { id } = req.params;
+    mystery.query(`DELETE FROM "todo-list" WHERE id=${id}`, (err, result) => {
         if (err) {
             console.log(err);
         } else {
