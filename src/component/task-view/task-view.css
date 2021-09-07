@@ -6,6 +6,7 @@
     border-top: 2px solid #000;
     display: grid;
     grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(8, 95px);
     justify-content: center;
 }
 
@@ -21,7 +22,32 @@ align-items: center;
 .task>button {
     height: 30px;
     border: none;
-    background-color: #D70040;
+    background-color: var(--red-color);
     color: #fff;
     font-weight: 700;
+}
+
+/***************** Smaller Desktop *****************/
+
+@media screen and (min-width:980px) and (max-width: 1200px) {
+    .task-view {
+    grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/***************** TABLET *****************/
+
+@media screen and (min-width:765px) and (max-width: 980px) {
+    .task-view {
+    grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/***************** MOBILE *****************/
+
+@media screen and (max-width: 765px) {
+    .task-view {
+    grid-template-columns: 1fr;
+
+    }
 }

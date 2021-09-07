@@ -1,0 +1,32 @@
+.task-entry-view {
+    position: relative;
+    display:inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 150px;
+}
+
+.task-entry-view>input:first-of-type {
+border: 1px solid rgba(0,0,0,0.25);
+padding: 15px 25px;
+border-radius: 12px;
+margin-right: 20px;
+width: fit-content;
+}
+
+.task-entry-view input:focus,
+.task-entry-view textarea:focus {
+    outline: none;
+    box-shadow: 0 0 3px 2px rgba(0,0,0,0.25);
+    border-radius: 12px;
+}
+
+
+.task-entry-view>input:last-of-type {
+    border: none;
+    padding: 15px 25px;
+    background-color: var(--green-color);
+    color: #fff;
+    border-radius: 12px;
+}
+
