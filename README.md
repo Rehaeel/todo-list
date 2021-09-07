@@ -1,3 +1,3 @@
 ### `install`
 
-npm i cors express mysql dotenv
+npm i cors express mysql dotenv nodemon
