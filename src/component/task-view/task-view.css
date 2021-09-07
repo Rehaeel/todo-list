@@ -1,0 +1,27 @@
+.task-view {
+    position: relative;
+    width: 90%;
+    padding: 0 5%;
+    height: calc(100vh - 100px);
+    border-top: 2px solid #000;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    justify-content: center;
+}
+
+.task {
+border: 2px solid rgba(0,0,0,0.25);
+padding: 15px 25px;
+height: fit-content;
+display: grid;
+grid-template-columns: 1fr 30px;
+align-items: center;
+}
+
+.task>button {
+    height: 30px;
+    border: none;
+    background-color: #D70040;
+    color: #fff;
+    font-weight: 700;
+}
