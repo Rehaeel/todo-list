@@ -24,6 +24,7 @@ app.get('/', (req, res) => {
         }
     });
 });
+
 ////////// DELETE
 app.delete('/:id', (req, res) => {
     let id = req.params.id;
@@ -38,8 +39,9 @@ app.delete('/:id', (req, res) => {
 
 ////////// POST
 
-app.post('/', (req, res) => {
-    mystery.query('INSERT INTO todoList (zadanie, priorytet, id)', (err, result) => {
+app.post('/:zadanie', (req, res) => {
+    let zadanie = req.params.zadanie;
+    mystery.query(`INSERT INTO todoList (zadanie, priorytet, id) VALUES("${zadanie}", "", NULL)`, (err, result) => {
         if (err) {
             console.log(err);
         } else {
