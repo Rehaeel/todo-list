@@ -25,6 +25,18 @@ app.get('/', (req, res) => {
     });
 });
 
+////////// DELETE
+
+app.post('/', (req, res) => {
+    mystery.query('DELETE FROM `todo-list` WHERE id=?', (err, result) => {
+        if (err) {
+            console.log(err);
+        } else {
+            res.send(result);
+        }
+    });
+});
+
 ////////// POST
 
 app.post('/', (req, res) => {
