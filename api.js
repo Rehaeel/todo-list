@@ -16,7 +16,7 @@ const mystery = mysql.createConnection({
 
 /////////// GET
 app.get('/', (req, res) => {
-    mystery.query('SELECT * FROM `todo-list`', (err, result) => {
+    mystery.query('SELECT * FROM todoList', (err, result) => {
         if (err) {
             console.log(err);
         } else {
@@ -24,12 +24,10 @@ app.get('/', (req, res) => {
         }
     });
 });
-
 ////////// DELETE
-
-app.delete('/{id}', (req, res) => {
-    const { id } = req.params;
-    mystery.query(`DELETE FROM "todo-list" WHERE id=${id}`, (err, result) => {
+app.delete('/:id', (req, res) => {
+    let id = req.params.id;
+    mystery.query(`DELETE FROM todoList WHERE id=${id}`, (err, result) => {
         if (err) {
             console.log(err);
         } else {
@@ -41,7 +39,7 @@ app.delete('/{id}', (req, res) => {
 ////////// POST
 
 app.post('/', (req, res) => {
-    mystery.query('INSERT INTO `todo-list` (zadanie, priorytet, id)', (err, result) => {
+    mystery.query('INSERT INTO todoList (zadanie, priorytet, id)', (err, result) => {
         if (err) {
             console.log(err);
         } else {
