@@ -26,6 +26,7 @@ export default class TaskView extends React.Component {
         await this.fetchData();
     }
 
+
     render() {
         return (
             <div className="task-view">
