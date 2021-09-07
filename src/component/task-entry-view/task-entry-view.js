@@ -13,7 +13,6 @@ export default class TaskEntryView extends React.Component {
     }
 
     insertTask(event) {
-        console.log(this.state.value)
         this.setState({ value: event.target.value });
     }
 

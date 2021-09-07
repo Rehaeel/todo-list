@@ -1,0 +1,5 @@
+.main-renderer {
+    position:relative;
+    display: grid;
+    justify-items: center;
+}
