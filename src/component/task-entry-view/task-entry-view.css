@@ -34,7 +34,17 @@
     background-color: var(--green-color);
     color: #fff;
     border-radius: 12px;
+    filter:drop-shadow(none);
+    transform: scale(1);
+    transition: all .2s ease;
+    cursor: pointer;
 }
+
+.task-entry-view>input:last-of-type:hover {
+    filter: drop-shadow(0 0 10px rgba(0, 138, 16, 0.25));
+    transform: scale(1.03);
+}
+
 
 /***************** Smaller Desktop *****************/
 

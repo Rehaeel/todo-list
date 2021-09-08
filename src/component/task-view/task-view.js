@@ -31,7 +31,7 @@ export default class TaskView extends React.Component {
             <div className="task-view">
                 {this.state.tasks.map(res =>
                     <div className="task" key={res.id}>
-                        <h3>{res.zadanie}</h3>
+                        <h4>{res.zadanie}</h4>
                         <button onClick={() => this.deleteTask(res.id)}>X</button>
                     </div>
                 )}
