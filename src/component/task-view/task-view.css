@@ -8,10 +8,12 @@
     grid-template-columns: repeat(5, 20%);
     justify-content: center;
     gap: 20px;
+    background-color: var(--gray-color);
 }
 
 .task {
-    border: 1px solid rgba(255,255,255,0.08);
+    border: 1px solid rgba(81, 125, 149,0.3);
+    border-radius: 15px;
     display: grid;
     grid-template-columns: 1fr 30px;
     column-gap: 15px ;
@@ -19,30 +21,43 @@
     justify-content: space-between;
     padding: 0 15px;
     word-break: break-all;
-    box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.05);
-    background: rgb(100,100,100);
-    background: linear-gradient( 90deg, rgb(75, 75, 75) 40%, rgb(100, 100, 100) 100%);
-    transform: scale(1);
+    box-shadow: 0 0 10px 2px rgba(81, 125, 149, 0.05);
+    background: var(--light-gray-color);
     transition: all .5s ease;
 }
 
+@media screen and (min-width:980px) {
+    .task:nth-child(2n) {
+        background: #fff;
+        color: var(--dark-gray-color);
+    } 
+}
+
 .task:hover {
-    box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.15);
-    transform: scale(1.01);
+    box-shadow: 0 0 10px 2px rgba(81, 125, 149, 0.15);
     cursor: default;
 }
 
-.task>button {
+.task button {
     height: 30px;
     border: none;
-    background-color: var(--red-color);
+    background-color: var(--light-red-color);
     color: #fff;
     font-weight: 700;
+    border-radius: 25%;
+    transform: scale(1);
+    transition: all .3s ease;
 }
 
 .task>button:hover {
     cursor: pointer;
 }
+
+.task:hover button {
+    transform: scale(1.1);
+}
+
+
 
 /***************** Smaller Desktop *****************/
 
@@ -58,6 +73,15 @@
     .task-view {
         grid-template-columns: repeat(2, 50%);
     }
+    .task:nth-child(3),
+    .task:nth-child(2),
+    .task:nth-child(6),
+    .task:nth-child(7),
+    .task:nth-child(10), 
+    .task:nth-child(11) {
+    background: #fff;
+    color: var(--dark-gray-color);
+}
 }
 
 /***************** MOBILE *****************/
@@ -65,6 +89,10 @@
 @media screen and (max-width: 765px) {
     .task-view {
         grid-template-columns: 1fr;
-
     }
+
+    .task:nth-child(2n) {
+    background: #fff;
+    color: var(--dark-gray-color);
+}
 }

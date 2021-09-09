@@ -1,6 +1,11 @@
 :root {
-  --red-color: #D70040;
-  --green-color: #008A10;
+  --light-red-color:#FF976B;
+  --red-color: #FC8550;
+  --green-color: #4AB068;
+  --light-gray-color: #F1F6FA;
+  --gray-color: #E7EEF3;
+  --dark-gray-color: #5787A1;
+  --button-color: #E2EDF1;
 }
 
 body {
@@ -10,6 +15,6 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: #fff;
-  background-color: #333;
+  color: var(--dark-gray-color);
+  background-color: #E7EEF3;
 }

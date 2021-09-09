@@ -1,5 +1,7 @@
 import React from 'react'
 import './task-view.css';
+import { NotificationContainer, NotificationManager } from 'react-notifications';
+import 'react-notifications/lib/notifications.css';
 const axios = require('axios').default;
 
 export default class TaskView extends React.Component {
@@ -17,7 +19,8 @@ export default class TaskView extends React.Component {
         this.setState({ tasks: response.data });
     }
 
-    async deleteTask(id) {
+    deleteTask = async (id) => {
+        NotificationManager.error('poprawnie usunięto zadanie', 'Usunięto zadanie');
         await axios.delete(process.env.REACT_APP_DB_ENDPOINT + `/${id}`);
         this.fetchData();
     }
@@ -35,6 +38,7 @@ export default class TaskView extends React.Component {
                         <button onClick={() => this.deleteTask(res.id)}>X</button>
                     </div>
                 )}
+                <NotificationContainer />
             </div>
         )
     }
