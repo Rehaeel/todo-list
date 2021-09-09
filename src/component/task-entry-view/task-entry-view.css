@@ -4,12 +4,13 @@
     display:inline-flex;
     align-items: center;
     justify-content: center;
-    height: 120px;
+    height: 100px;
     z-index: 999;
     background-color: var(--light-gray-color);
     width: 100%;
     border-bottom: 0.5px solid rgba(81, 125, 149,0.25);
-    margin-bottom: 20px;
+    margin-bottom: 25px;
+    box-shadow: 5px 0 10px 10px rgba(87, 135, 161, 0.2);
 }
 
 .task-entry-view>input:first-of-type {
@@ -59,8 +60,10 @@ transform: scale(1.1);
 
 @media screen and (min-width:980px) and (max-width: 1500px) {
     .task-entry-view {
-        height: 100px;
-        margin-bottom: 10px;
+        height: 90px;
+        margin-bottom: 20px;
+    border-bottom: 0.5px solid rgba(81, 125, 149,0.45);
+
     }
 }
 
@@ -68,8 +71,11 @@ transform: scale(1.1);
 
 @media screen and (min-width:765px) and (max-width: 980px) {
     .task-entry-view {
-        height: 100px;
-        margin-bottom: 5px;
+        height: 90px;
+        margin-bottom: 15px;
+    border-bottom: 0.5px solid rgba(81, 125, 149,0.65);
+
+
     }
 }
 
@@ -78,6 +84,8 @@ transform: scale(1.1);
 @media screen and (max-width: 765px) {
     .task-entry-view {
         height: 80px;
-        margin-bottom: 5px;
+        margin-bottom: 10px;
+    border-bottom: 0.5px solid rgba(81, 125, 149,0.6);
+
     }
 }
