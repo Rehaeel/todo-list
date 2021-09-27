@@ -1,5 +1,7 @@
 import React from 'react'
 import './task-entry-view.css';
+import { NotificationContainer, NotificationManager } from 'react-notifications';
+import 'react-notifications/lib/notifications.css';
 const axios = require('axios');
 
 export default class TaskEntryView extends React.Component {
@@ -16,7 +18,8 @@ export default class TaskEntryView extends React.Component {
         this.setState({ value: event.target.value });
     }
 
-    sendTask(task) {
+    sendTask = (task) => {
+        NotificationManager.success(`${task}`, 'Dodano zadanie!');
         axios.post(process.env.REACT_APP_DB_ENDPOINT + `/${task}`);
     }
 
@@ -25,6 +28,7 @@ export default class TaskEntryView extends React.Component {
             <form className="task-entry-view" onSubmit={() => this.sendTask(this.state.value)}>
                 <input type="text" placeholder="dodaj zadanie" onChange={this.insertTask} />
                 <input type="submit" value="Dodaj" />
+                <NotificationContainer />
             </form>
         )
     }
