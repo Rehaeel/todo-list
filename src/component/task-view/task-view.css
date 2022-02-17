@@ -5,13 +5,14 @@
 	height: fit-content;
 	padding-top: 20px;
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+	grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
 	justify-content: center;
 	gap: 20px;
 	background-color: var(--gray-color);
 }
 
 .task {
+	max-width: 700px;
 	border: 1px solid rgba(81, 125, 149, 0.3);
 	border-radius: 15px;
 	display: grid;
@@ -57,4 +58,27 @@
 .task:hover button {
 	transform: scale(1.1);
 	filter: drop-shadow(0 0 5px rgba(230, 88, 62, 0.2));
+}
+
+/***************** TABLET *****************/
+
+@media screen and (min-width: 765px) and (max-width: 980px) {
+	.task:nth-child(3),
+	.task:nth-child(2),
+	.task:nth-child(6),
+	.task:nth-child(7),
+	.task:nth-child(10),
+	.task:nth-child(11) {
+		background: #fff;
+		color: var(--dark-gray-color);
+	}
+}
+
+/***************** MOBILE *****************/
+
+@media screen and (max-width: 765px) {
+	.task:nth-child(2n) {
+		background: #fff;
+		color: var(--dark-gray-color);
+	}
 }

@@ -9,6 +9,7 @@ import TaskView from './component/task-view/task-view.jsx';
 function App() {
 	const navigate = useNavigate();
 	const [user, setUser] = useState(false);
+	const [tasks, setTasks] = useState([]);
 
 	useEffect(() => {
 		if (window.localStorage.getItem('user')) {
@@ -38,8 +39,11 @@ function App() {
 					element={
 						user && (
 							<>
-								<TaskEntryView />
-								<TaskView />
+								<TaskEntryView
+									tasks={tasks}
+									setTasks={setTasks}
+								/>
+								<TaskView tasks={tasks} setTasks={setTasks} />
 							</>
 						)
 					}

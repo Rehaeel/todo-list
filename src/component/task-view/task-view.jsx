@@ -1,44 +1,35 @@
-import { useEffect, useState } from 'react';
-import axios from 'axios';
+import { useEffect } from 'react';
 import './task-view.css';
 
-import {
-	NotificationContainer,
-	NotificationManager,
-} from 'react-notifications';
-import 'react-notifications/lib/notifications.css';
+import { motion } from 'framer-motion';
+import axios from 'axios';
 
-const TaskView = () => {
-	const [tasks, setTasks] = useState([]);
-
-	const fetchData = async () => {
-		return await axios
-			.get(process.env.REACT_APP_DB_ENDPOINT)
-			.then((res) => setTasks(res.data));
-	};
+const TaskView = (props) => {
 	useEffect(() => {
+		const fetchData = async () => {
+			return await axios
+				.get(process.env.REACT_APP_DB_ENDPOINT)
+				.then((res) => props.setTasks(res.data));
+		};
 		fetchData();
 	}, []);
 
 	const deleteTask = async (id) => {
-		NotificationManager.error(
-			'poprawnie usunięto zadanie',
-			'Usunięto zadanie'
+		props.setTasks((prevTasks) =>
+			[...prevTasks].filter((task) => task.id !== id)
 		);
 		await axios.delete(process.env.REACT_APP_DB_ENDPOINT + `/${id}`);
-		fetchData();
 	};
 
 	return (
-		<div className='task-view'>
-			{tasks.map((res) => (
+		<motion.div className='task-view'>
+			{props.tasks.map((res) => (
 				<div className='task' key={res.id}>
 					<h4>{res.zadanie}</h4>
 					<button onClick={() => deleteTask(res.id)}>X</button>
 				</div>
 			))}
-			<NotificationContainer />
-		</div>
+		</motion.div>
 	);
 };
 

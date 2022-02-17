@@ -3,31 +3,18 @@
 	"version": "0.1.0",
 	"private": true,
 	"dependencies": {
-		"@testing-library/jest-dom": "^5.14.1",
-		"@testing-library/react": "^11.2.7",
-		"@testing-library/user-event": "^12.8.3",
-		"axios": "^0.21.4",
+		"axios": "^0.26.0",
+		"framer-motion": "^6.2.6",
 		"react": "^17.0.2",
 		"react-dom": "^17.0.2",
-		"react-favicon": "0.0.23",
-		"react-notifications": "^1.7.2",
 		"react-router": "^6.2.1",
 		"react-router-dom": "^6.2.1",
-		"react-scripts": "^4.0.3",
-		"sha256": "^0.2.0",
-		"web-vitals": "^1.1.2"
+		"react-scripts": "^5.0.0",
+		"sha256": "^0.2.0"
 	},
 	"scripts": {
 		"start": "react-scripts start",
-		"build": "react-scripts build",
-		"test": "react-scripts test",
-		"eject": "react-scripts eject"
-	},
-	"eslintConfig": {
-		"extends": [
-			"react-app",
-			"react-app/jest"
-		]
+		"build": "react-scripts build"
 	},
 	"browserslist": {
 		"production": [
