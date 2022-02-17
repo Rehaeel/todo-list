@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
 import { Route, Routes, useNavigate } from 'react-router';
-import Login from './component/login/login.jsx';
-import TaskEntryView from './component/task-entry-view/task-entry-view.js';
-import TaskView from './component/task-view/task-view.js';
 import { fetchCheckUser } from './services.js';
+
+import Login from './component/login/login.jsx';
+import TaskEntryView from './component/task-entry-view/task-entry-view.jsx';
+import TaskView from './component/task-view/task-view.jsx';
 
 function App() {
 	const navigate = useNavigate();
