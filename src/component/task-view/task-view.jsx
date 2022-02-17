@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import './task-view.css';
 
-import { motion } from 'framer-motion';
 import axios from 'axios';
 
 const TaskView = (props) => {
@@ -22,14 +21,14 @@ const TaskView = (props) => {
 	};
 
 	return (
-		<motion.div className='task-view'>
+		<div className='task-view'>
 			{props.tasks.map((res) => (
 				<div className='task' key={res.id}>
 					<h4>{res.zadanie}</h4>
 					<button onClick={() => deleteTask(res.id)}>X</button>
 				</div>
 			))}
-		</motion.div>
+		</div>
 	);
 };
 
