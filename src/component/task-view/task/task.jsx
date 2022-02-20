@@ -1,6 +1,5 @@
-import axios from 'axios';
 import { useRef, useState } from 'react';
-import { fetchTaskUpdate } from '../../../services';
+import { fetchDeleteTask, fetchTaskUpdate } from '../../../services';
 import styles from './task.module.css';
 
 const Task = ({ task, setTasks }) => {
@@ -19,7 +18,7 @@ const Task = ({ task, setTasks }) => {
 		setTasks((prevTasks) =>
 			[...prevTasks].filter((task) => task.id !== id)
 		);
-		await axios.delete(process.env.REACT_APP_DB_ENDPOINT + `/${id}`);
+		fetchDeleteTask(id);
 	};
 
 	return (

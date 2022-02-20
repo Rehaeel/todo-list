@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 
 import './task-entry-view.css';
+import { fetchPostTask } from '../../services';
 
 const TaskEntryView = (props) => {
 	const [value, setValue] = useState('');
@@ -12,7 +12,7 @@ const TaskEntryView = (props) => {
 
 	const onSubmitHandler = async (e) => {
 		e.preventDefault();
-		await axios.post(process.env.REACT_APP_DB_ENDPOINT + `/${value}`);
+		fetchPostTask(value);
 		const task = { zadanie: value, id: Math.random() };
 		props.setTasks((prevTasks) => [task, ...prevTasks]);
 		setValue('');
