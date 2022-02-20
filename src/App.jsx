@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Route, Routes, useNavigate } from 'react-router';
-import { fetchCheckUser } from './services.js';
+import { fetchCheckUser, fetchData } from './services.js';
 
 import Login from './component/login/login.jsx';
 import TaskEntryView from './component/task-entry-view/task-entry-view.jsx';
@@ -27,6 +27,14 @@ function App() {
 			setUser(false);
 			navigate('/login');
 		}
+	}, []);
+
+	useEffect(() => {
+		fetchData().then((res) => setTasks(res.data.reverse()));
+
+		setInterval(() => {
+			fetchData().then((res) => setTasks(res.data.reverse()));
+		}, 5000);
 	}, []);
 
 	return (

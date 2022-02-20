@@ -8,3 +8,33 @@
 .task > input:focus {
 	outline: 1px solid var(--dark-gray-color);
 }
+
+.task > button {
+	height: 30px;
+	width: 30px;
+	border: none;
+	color: #fff;
+	font-weight: 700;
+	border-radius: 25%;
+	transform: scale(1);
+	transition: all 0.3s ease-in-out;
+}
+
+.task > button:hover {
+	cursor: pointer;
+	transform: scale(1.1);
+	filter: drop-shadow(0 0 5px rgba(230, 88, 62, 0.2));
+}
+
+.ok {
+	background-color: var(--green-color) !important;
+	border: 1.5px solid rgba(230, 88, 62, 0.3);
+	grid-column: 2 / span 1;
+	font-size: 120%;
+}
+
+.delete {
+	background-color: var(--light-red-color);
+	border: 1.5px solid rgba(230, 88, 62, 0.3);
+	grid-column: 3 / span 1;
+}

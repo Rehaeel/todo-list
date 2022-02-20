@@ -17,7 +17,7 @@
 	border: 1px solid rgba(81, 125, 149, 0.3);
 	border-radius: 15px;
 	display: grid;
-	grid-template-columns: 1fr 30px;
+	grid-template-columns: 1fr 30px 30px;
 	column-gap: 15px;
 	align-items: center;
 	justify-content: space-between;
@@ -38,27 +38,6 @@
 .task:hover {
 	box-shadow: 0 0 10px 2px rgba(81, 125, 149, 0.15);
 	cursor: default;
-}
-
-.task button {
-	height: 30px;
-	border: none;
-	background-color: var(--light-red-color);
-	color: #fff;
-	font-weight: 700;
-	border-radius: 25%;
-	transform: scale(1);
-	transition: all 0.3s ease-in-out;
-	border: 1.5px solid rgba(230, 88, 62, 0.3);
-}
-
-.task > button:hover {
-	cursor: pointer;
-}
-
-.task:hover button {
-	transform: scale(1.1);
-	filter: drop-shadow(0 0 5px rgba(230, 88, 62, 0.2));
 }
 
 /***************** TABLET *****************/

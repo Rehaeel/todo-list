@@ -4,6 +4,7 @@ import styles from './task.module.css';
 
 const Task = ({ task, setTasks }) => {
 	const [value, setValue] = useState(task.zadanie);
+	const [showTask, setShowTask] = useState(false);
 	const inputRef = useRef();
 
 	const onUpdateHandler = () => {
@@ -12,6 +13,7 @@ const Task = ({ task, setTasks }) => {
 			zadanie: value,
 		};
 		fetchTaskUpdate(submitTask);
+		setShowTask(false);
 	};
 
 	const onDeleteHandler = async (id) => {
@@ -27,13 +29,30 @@ const Task = ({ task, setTasks }) => {
 				value={value}
 				onChange={(e) => setValue(e.target.value)}
 				onBlur={onUpdateHandler}
-				onSubmit={(e) => {
-					e.preventDefault();
-					inputRef.current.blur();
+				onFocus={() => setShowTask(true)}
+				onKeyDown={(e) => {
+					if (e.code === 'Enter') {
+						onUpdateHandler();
+						inputRef.current.blur();
+					}
 				}}
 				ref={inputRef}
 			/>
-			<button onClick={() => onDeleteHandler(task.id)}>X</button>
+			{showTask && (
+				<button
+					className={styles.ok}
+					onClick={() => {
+						inputRef.current.blur();
+						onUpdateHandler();
+					}}>
+					✓
+				</button>
+			)}
+			<button
+				className={styles.delete}
+				onClick={() => onDeleteHandler(task.id)}>
+				X
+			</button>
 		</div>
 	);
 };
