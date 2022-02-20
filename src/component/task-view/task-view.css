@@ -13,6 +13,7 @@
 
 .task {
 	max-width: 700px;
+	min-height: 3em;
 	border: 1px solid rgba(81, 125, 149, 0.3);
 	border-radius: 15px;
 	display: grid;

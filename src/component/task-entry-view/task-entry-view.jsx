@@ -14,7 +14,7 @@ const TaskEntryView = (props) => {
 		e.preventDefault();
 		await axios.post(process.env.REACT_APP_DB_ENDPOINT + `/${value}`);
 		const task = { zadanie: value, id: Math.random() };
-		props.setTasks((prevTasks) => [...prevTasks, task]);
+		props.setTasks((prevTasks) => [task, ...prevTasks]);
 		setValue('');
 	};
 

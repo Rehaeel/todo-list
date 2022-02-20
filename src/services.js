@@ -9,3 +9,9 @@ export const fetchCheckUser = async (email) =>
 	await axios
 		.get(`${process.env.REACT_APP_DB_ENDPOINT}/user/${email}`)
 		.then((res) => res.data);
+
+export const fetchTaskUpdate = async (task) =>
+	await axios.post(
+		`${process.env.REACT_APP_DB_ENDPOINT}/zadanie/${task.id}`,
+		{ zadanie: task.zadanie }
+	);

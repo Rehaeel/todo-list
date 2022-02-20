@@ -1,0 +1,10 @@
+.task > input {
+	border: none;
+	background-color: transparent;
+	font-size: 0.9em;
+	padding: 0.5em 1em;
+}
+
+.task > input:focus {
+	outline: 1px solid var(--dark-gray-color);
+}
