@@ -24,7 +24,12 @@ const Task = ({ task, setTasks }) => {
 	};
 
 	return (
-		<div className={`task ${styles.task}`}>
+		<form
+			className={`task ${styles.task}`}
+			onSubmit={(e) => {
+				e.preventDefault();
+				onUpdateHandler();
+			}}>
 			<input
 				value={value}
 				onChange={(e) => setValue(e.target.value)}
@@ -44,7 +49,8 @@ const Task = ({ task, setTasks }) => {
 					onClick={() => {
 						inputRef.current.blur();
 						onUpdateHandler();
-					}}>
+					}}
+					type='submit'>
 					✓
 				</button>
 			)}
@@ -53,7 +59,7 @@ const Task = ({ task, setTasks }) => {
 				onClick={() => onDeleteHandler(task.id)}>
 				X
 			</button>
-		</div>
+		</form>
 	);
 };
 

@@ -34,7 +34,7 @@ function App() {
 
 		setInterval(() => {
 			fetchData().then((res) => setTasks(res.data.reverse()));
-		}, 5000);
+		}, 3000);
 	}, []);
 
 	return (
