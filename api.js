@@ -3,7 +3,6 @@ const app = express();
 const mysql = require('mysql');
 const cors = require('cors');
 require('dotenv').config();
-const PORT = process.env.DB_PORT;
 
 app.use(cors());
 app.use(express.json());
@@ -46,7 +45,7 @@ app.delete('/:id', (req, res) => {
 	});
 });
 
-////////// POST
+////////// SET
 
 app.post('/:zadanie', (req, res) => {
 	const { zadanie } = req.params;
@@ -58,6 +57,25 @@ app.post('/:zadanie', (req, res) => {
 				console.log(err);
 			} else {
 				res.send(response);
+			}
+		}
+	);
+});
+
+////////// UPDATE
+
+app.post('/zadanie/:id', (req, res) => {
+	const { id } = req.params;
+	const { zadanie } = req.body;
+
+	mystery.query(
+		`UPDATE todoList SET zadanie='${zadanie}' WHERE id=${id}`,
+		(err, response) => {
+			if (err) {
+				console.log(err);
+			} else {
+				if (response.changedRows === 1) res.send('success');
+				else res.status(404).send('not found');
 			}
 		}
 	);
@@ -98,6 +116,6 @@ app.get('/user/:email', (req, res) => {
 
 //////////////////////////////////////////////
 
-app.listen(process.env.PORT || PORT, () => {
-	console.log(`My DB run on ${PORT} port`);
+app.listen(process.env.PORT, () => {
+	console.log(`My DB run on ${process.env.PORT} port`);
 });
