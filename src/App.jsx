@@ -6,11 +6,13 @@ import Login from './component/login/login.jsx';
 import TaskEntryView from './component/task-entry-view/task-entry-view.jsx';
 import './component/task-view/task-view.css';
 import Task from './component/task-view/task/task.jsx';
+import { compareArrs, returnUpdatedTasks } from './helperFunctions.js';
 
 function App() {
 	const navigate = useNavigate();
 	const [user, setUser] = useState(false);
 	const [tasks, setTasks] = useState([]);
+	const [fetchedTasks, setFetchedTasks] = useState([]);
 
 	useEffect(() => {
 		if (window.localStorage.getItem('user')) {
@@ -32,14 +34,20 @@ function App() {
 	}, []);
 
 	useEffect(() => {
-		const interval = setInterval(() => {
-			fetchData().then((res) => {
-				setTasks([]);
-				setTasks(res.data.reverse());
-			});
-		}, 3000);
-		return () => clearInterval(interval);
-	}, [tasks]);
+		setInterval(() => {
+			fetchData().then((res) => setFetchedTasks(res.data.reverse()));
+		}, 2000);
+	}, []);
+
+	useEffect(() => {
+		const newTasks = returnUpdatedTasks(tasks, fetchedTasks);
+		if (newTasks.length > 0) {
+			const newArr = [...compareArrs(tasks, newTasks)];
+			Promise.resolve()
+				.then(() => setTasks([]))
+				.then(() => setTasks(newArr));
+		}
+	}, [fetchedTasks]);
 
 	return (
 		<div className='main-renderer'>

@@ -33,7 +33,12 @@ const Task = ({ task, setTasks }) => {
 			<input
 				value={value}
 				onChange={(e) => setValue(e.target.value)}
-				onFocus={() => setShowTask(true)}
+				onFocus={() => {
+					setShowTask(true);
+				}}
+				onBlur={() => {
+					setShowTask(false);
+				}}
 				onKeyDown={(e) => {
 					if (e.code === 'Enter') {
 						onUpdateHandler();
