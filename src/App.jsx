@@ -4,7 +4,8 @@ import { fetchCheckUser, fetchData } from './services.js';
 
 import Login from './component/login/login.jsx';
 import TaskEntryView from './component/task-entry-view/task-entry-view.jsx';
-import TaskView from './component/task-view/task-view.jsx';
+import './component/task-view/task-view.css';
+import Task from './component/task-view/task/task.jsx';
 
 function App() {
 	const navigate = useNavigate();
@@ -17,6 +18,7 @@ function App() {
 				.then(() => {
 					setUser(true);
 					navigate('/');
+					fetchData().then((res) => setTasks(res.data.reverse()));
 				})
 				.catch(() => {
 					setUser(false);
@@ -30,12 +32,12 @@ function App() {
 	}, []);
 
 	useEffect(() => {
-		fetchData().then((res) => setTasks(res.data.reverse()));
-
-		setInterval(() => {
-			fetchData().then((res) => setTasks(res.data.reverse()));
-		}, 3000);
-	}, []);
+		const interval = setInterval(
+			fetchData().then((res) => setTasks(res.data.reverse())),
+			3000
+		);
+		return () => clearInterval(interval);
+	}, [tasks]);
 
 	return (
 		<div className='main-renderer'>
@@ -51,7 +53,17 @@ function App() {
 									tasks={tasks}
 									setTasks={setTasks}
 								/>
-								<TaskView tasks={tasks} setTasks={setTasks} />
+								(
+								<div className='task-view'>
+									{tasks.map((res) => (
+										<Task
+											task={res}
+											setTasks={setTasks}
+											key={res.id}
+										/>
+									))}
+								</div>
+								)
 							</>
 						)
 					}
