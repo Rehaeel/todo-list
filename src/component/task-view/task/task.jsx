@@ -33,7 +33,6 @@ const Task = ({ task, setTasks }) => {
 			<input
 				value={value}
 				onChange={(e) => setValue(e.target.value)}
-				onBlur={onUpdateHandler}
 				onFocus={() => setShowTask(true)}
 				onKeyDown={(e) => {
 					if (e.code === 'Enter') {
@@ -56,7 +55,8 @@ const Task = ({ task, setTasks }) => {
 			)}
 			<button
 				className={styles.delete}
-				onClick={() => onDeleteHandler(task.id)}>
+				onClick={() => onDeleteHandler(task.id)}
+				type='button'>
 				X
 			</button>
 		</form>

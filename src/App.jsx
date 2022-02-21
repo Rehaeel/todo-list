@@ -32,10 +32,12 @@ function App() {
 	}, []);
 
 	useEffect(() => {
-		const interval = setInterval(
-			fetchData().then((res) => setTasks(res.data.reverse())),
-			3000
-		);
+		const interval = setInterval(() => {
+			fetchData().then((res) => {
+				setTasks([]);
+				setTasks(res.data.reverse());
+			});
+		}, 3000);
 		return () => clearInterval(interval);
 	}, [tasks]);
 
