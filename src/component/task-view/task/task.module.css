@@ -3,6 +3,10 @@
 	background-color: transparent;
 	font-size: 0.9em;
 	padding: 0.5em 1em;
+	height: max-content;
+	word-wrap: break-word;
+	word-break: break-all;
+	inline-size: 100%;
 }
 
 .task > input:focus {

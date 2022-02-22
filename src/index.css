@@ -1,20 +1,20 @@
 :root {
-  --light-red-color:#FF976B;
-  --red-color: #FC8550;
-  --green-color: #4AB068;
-  --light-gray-color: #F1F6FA;
-  --gray-color: #E7EEF3;
-  --dark-gray-color: #5787A1;
-  --button-color: #E2EDF1;
+	--light-red-color: #ff976b;
+	--red-color: #fc8550;
+	--green-color: #4ab068;
+	--light-gray-color: #f1f6fa;
+	--gray-color: #e7eef3;
+	--dark-gray-color: #5787a1;
+	--button-color: #e2edf1;
 }
 
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: var(--dark-gray-color);
-  background-color: #E7EEF3;
+	margin: 0;
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+		'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
+		'Helvetica Neue', sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	color: var(--dark-gray-color);
+	background-color: #e7eef3;
 }
