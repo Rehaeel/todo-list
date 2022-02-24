@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Route, Routes, useNavigate } from 'react-router';
+import { Route, Routes, useLocation, useNavigate } from 'react-router';
 import { fetchCheckUser, fetchData } from './services.js';
 
 import Login from './component/login/login.jsx';
@@ -10,8 +10,10 @@ import { compareArrs, returnUpdatedTasks } from './helperFunctions.js';
 
 function App() {
 	const navigate = useNavigate();
+	const location = useLocation();
 	const [user, setUser] = useState(false);
 	const [tasks, setTasks] = useState([]);
+	const [areTasksFetched, setAreTasksFetched] = useState(false);
 	const [fetchedTasks, setFetchedTasks] = useState([]);
 
 	useEffect(() => {
@@ -21,17 +23,20 @@ function App() {
 					setUser(true);
 					navigate('/');
 					fetchData().then((res) => setTasks(res.data.reverse()));
+					setAreTasksFetched(true);
 				})
 				.catch(() => {
 					setUser(false);
 					window.localStorage.removeItem('user');
 					navigate('/login');
+					setAreTasksFetched(false);
 				});
 		} else {
 			setUser(false);
 			navigate('/login');
+			setAreTasksFetched(false);
 		}
-	}, []);
+	}, [user]);
 
 	useEffect(() => {
 		setInterval(() => {
@@ -40,12 +45,14 @@ function App() {
 	}, []);
 
 	useEffect(() => {
-		const newTasks = returnUpdatedTasks(tasks, fetchedTasks);
-		if (newTasks.length > 0) {
-			const newArr = [...compareArrs(tasks, newTasks)];
-			Promise.resolve()
-				.then(() => setTasks([]))
-				.then(() => setTasks(newArr));
+		if (location.pathname === '/' && areTasksFetched) {
+			const newTasks = returnUpdatedTasks(tasks, fetchedTasks);
+			if (newTasks.length > 0) {
+				const newArr = [...compareArrs(tasks, newTasks)];
+				Promise.resolve()
+					.then(() => setTasks([]))
+					.then(() => setTasks(newArr));
+			}
 		}
 	}, [fetchedTasks]);
 

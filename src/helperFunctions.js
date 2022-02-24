@@ -1,6 +1,7 @@
 export const returnUpdatedTasks = (tasks, fetched) =>
 	fetched.filter((task) => {
 		const foundEl = tasks.find((el) => el.id === task.id);
+		console.log(task);
 		return task.zadanie !== foundEl.zadanie;
 	});
 
