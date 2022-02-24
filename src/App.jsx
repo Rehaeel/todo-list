@@ -6,7 +6,6 @@ import Login from './component/login/login.jsx';
 import TaskEntryView from './component/task-entry-view/task-entry-view.jsx';
 import './component/task-view/task-view.css';
 import Task from './component/task-view/task/task.jsx';
-import { compareArrs, returnUpdatedTasks } from './helperFunctions.js';
 
 function App() {
 	const navigate = useNavigate();
@@ -40,9 +39,9 @@ function App() {
 	}, [user]);
 
 	useEffect(() => {
-		// setInterval(() => {
-		// 	fetchData().then((res) => setFetchedTasks(res.data.reverse()));
-		// }, 2000);
+		setInterval(() => {
+			fetchData().then((res) => setFetchedTasks(res.data.reverse()));
+		}, 2000);
 	}, []);
 
 	useEffect(() => {
@@ -69,7 +68,6 @@ function App() {
 									tasks={tasks}
 									setTasks={setTasks}
 								/>
-								(
 								<div className='task-view'>
 									{tasks.map((res) => (
 										<Task
@@ -80,7 +78,6 @@ function App() {
 										/>
 									))}
 								</div>
-								)
 							</>
 						)
 					}

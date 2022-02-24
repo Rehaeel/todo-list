@@ -59,7 +59,7 @@ const Task = ({ task, setTasks, setIsEditingTask }) => {
 				ref={inputRef}
 			/>
 
-			{showTask && (
+			{showTask ? (
 				<button
 					className={styles.ok}
 					onClick={() => {
@@ -69,13 +69,14 @@ const Task = ({ task, setTasks, setIsEditingTask }) => {
 					type='submit'>
 					✓
 				</button>
+			) : (
+				<button
+					className={styles.delete}
+					onClick={() => onDeleteHandler(task.id)}
+					type='button'>
+					X
+				</button>
 			)}
-			<button
-				className={styles.delete}
-				onClick={() => onDeleteHandler(task.id)}
-				type='button'>
-				X
-			</button>
 		</form>
 	);
 };

@@ -17,11 +17,11 @@
 	border: 1px solid rgba(81, 125, 149, 0.3);
 	border-radius: 15px;
 	display: grid;
-	grid-template-columns: 1fr 30px 30px;
+	grid-template-columns: 1fr 30px;
 	column-gap: 15px;
 	align-items: center;
 	justify-content: space-between;
-	padding: 0 15px;
+	padding: 2% 15px;
 	word-break: break-word;
 	box-shadow: 0 0 10px 2px rgba(81, 125, 149, 0.05);
 	background: var(--light-gray-color);
