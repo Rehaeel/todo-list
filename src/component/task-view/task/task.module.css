@@ -3,6 +3,7 @@
 	background-color: transparent;
 	font-size: 0.9em;
 	padding: 0.5em 1em;
+	width: 100%;
 	min-height: 1em;
 	max-height: fit-content;
 	inline-size: 100%;
@@ -42,12 +43,10 @@
 .ok {
 	background-color: var(--green-color) !important;
 	border: 1.5px solid rgba(230, 88, 62, 0.3);
-	grid-column: 2 / span 1;
 	font-size: 120%;
 }
 
 .delete {
 	background-color: var(--light-red-color);
 	border: 1.5px solid rgba(230, 88, 62, 0.3);
-	grid-column: 3 / span 1;
 }
