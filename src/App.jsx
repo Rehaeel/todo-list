@@ -15,6 +15,7 @@ function App() {
 	const [tasks, setTasks] = useState([]);
 	const [areTasksFetched, setAreTasksFetched] = useState(false);
 	const [fetchedTasks, setFetchedTasks] = useState([]);
+	const [isEditingTask, setIsEditingTask] = useState(false);
 
 	useEffect(() => {
 		if (window.localStorage.getItem('user')) {
@@ -45,14 +46,12 @@ function App() {
 	}, []);
 
 	useEffect(() => {
-		if (location.pathname === '/' && areTasksFetched) {
-			const newTasks = returnUpdatedTasks(tasks, fetchedTasks);
-			if (newTasks.length > 0) {
-				const newArr = [...compareArrs(tasks, newTasks)];
-				Promise.resolve()
-					.then(() => setTasks([]))
-					.then(() => setTasks(newArr));
-			}
+		if (location.pathname === '/' && areTasksFetched && !isEditingTask) {
+			const newTasks = fetchedTasks;
+
+			Promise.resolve()
+				.then(() => setTasks([]))
+				.then(() => setTasks(newTasks));
 		}
 	}, [fetchedTasks]);
 
@@ -77,6 +76,7 @@ function App() {
 											task={res}
 											setTasks={setTasks}
 											key={res.id}
+											setIsEditingTask={setIsEditingTask}
 										/>
 									))}
 								</div>

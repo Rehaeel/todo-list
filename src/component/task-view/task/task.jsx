@@ -2,7 +2,7 @@ import { useRef, useState } from 'react';
 import { fetchDeleteTask, fetchTaskUpdate } from '../../../services';
 import styles from './task.module.css';
 
-const Task = ({ task, setTasks }) => {
+const Task = ({ task, setTasks, setIsEditingTask }) => {
 	const [value, setValue] = useState(task.zadanie);
 	const [showTask, setShowTask] = useState(false);
 	const inputRef = useRef();
@@ -35,9 +35,11 @@ const Task = ({ task, setTasks }) => {
 				onChange={(e) => setValue(e.target.value)}
 				onFocus={() => {
 					setShowTask(true);
+					setIsEditingTask(true);
 				}}
 				onBlur={() => {
 					setShowTask(false);
+					setIsEditingTask(false);
 				}}
 				onKeyDown={(e) => {
 					if (e.code === 'Enter') {

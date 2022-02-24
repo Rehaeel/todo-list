@@ -1,8 +1,8 @@
 export const returnUpdatedTasks = (tasks, fetched) =>
 	fetched.filter((task) => {
 		const foundEl = tasks.find((el) => el.id === task.id);
-		console.log(task);
-		return task.zadanie !== foundEl.zadanie;
+		if (foundEl) return task.zadanie !== foundEl.zadanie;
+		else return true;
 	});
 
 export const compareArrs = (tasks, newTasks) => {
