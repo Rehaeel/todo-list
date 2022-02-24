@@ -1,11 +1,18 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { fetchDeleteTask, fetchTaskUpdate } from '../../../services';
 import styles from './task.module.css';
+import autosize from 'autosize';
 
 const Task = ({ task, setTasks, setIsEditingTask }) => {
 	const [value, setValue] = useState(task.zadanie);
 	const [showTask, setShowTask] = useState(false);
 	const inputRef = useRef();
+
+	useEffect(() => {
+		if (inputRef.current !== undefined) {
+			autosize(inputRef.current);
+		}
+	}, [inputRef]);
 
 	const onUpdateHandler = () => {
 		const submitTask = {
@@ -30,7 +37,8 @@ const Task = ({ task, setTasks, setIsEditingTask }) => {
 				e.preventDefault();
 				onUpdateHandler();
 			}}>
-			<input
+			<textarea
+				style={{ width: `calc(100% - 25px)` }}
 				value={value}
 				onChange={(e) => setValue(e.target.value)}
 				onFocus={() => {
@@ -47,8 +55,10 @@ const Task = ({ task, setTasks, setIsEditingTask }) => {
 						inputRef.current.blur();
 					}
 				}}
+				rows={1}
 				ref={inputRef}
 			/>
+
 			{showTask && (
 				<button
 					className={styles.ok}

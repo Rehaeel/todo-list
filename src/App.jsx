@@ -40,9 +40,9 @@ function App() {
 	}, [user]);
 
 	useEffect(() => {
-		setInterval(() => {
-			fetchData().then((res) => setFetchedTasks(res.data.reverse()));
-		}, 2000);
+		// setInterval(() => {
+		// 	fetchData().then((res) => setFetchedTasks(res.data.reverse()));
+		// }, 2000);
 	}, []);
 
 	useEffect(() => {
