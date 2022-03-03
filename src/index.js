@@ -4,6 +4,8 @@ import './index.css';
 import App from './App.jsx';
 import { BrowserRouter } from 'react-router-dom';
 
+Notification.requestPermission();
+
 ReactDOM.render(
 	<BrowserRouter>
 		<App />
