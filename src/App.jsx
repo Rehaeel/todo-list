@@ -50,7 +50,6 @@ function App() {
 			Promise.resolve()
 				.then(() => setTasks([]))
 				.then(() => setTasks(fetchedTasks));
-
 			// if (
 			// 	compareArrs(tasks, fetchedTasks).length > 0 &&
 			// 	Notification.permission === 'granted'
