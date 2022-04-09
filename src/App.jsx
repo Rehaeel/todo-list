@@ -38,16 +38,11 @@ function App() {
 		}
 	}, [user]);
 
-	const inputRef = useRef();
-	const [value, setValue] = useState();
 	useEffect(() => {
-		// setInterval(() => {
-		// 	fetchData().then((res) => setFetchedTasks(res.data.reverse()));
-		// }, 2000);
+		setInterval(() => {
+			fetchData().then((res) => setFetchedTasks(res.data.reverse()));
+		}, 2000);
 	}, []);
-	if (inputRef)
-		if (inputRef.current)
-			inputRef.current.addEventListener('keyup', (e) => setValue(e.key));
 
 	useEffect(() => {
 		if (location.pathname === '/' && areTasksFetched && !isEditingTask) {
@@ -72,16 +67,14 @@ function App() {
 									setTasks={setTasks}
 								/>
 								<div className='task-view'>
-									<input ref={inputRef} />
-									{value}
-									{/* {tasks.map((res) => (
+									{tasks.map((res) => (
 										<Task
 											task={res}
 											setTasks={setTasks}
 											key={res.id}
 											setIsEditingTask={setIsEditingTask}
 										/>
-									))} */}
+									))}
 								</div>
 							</>
 						)

@@ -57,8 +57,8 @@ const Task = ({ task, setTasks, setIsEditingTask }) => {
 						// if (!valueChanged) inputRef.current.value = initValue;
 					}, 250);
 				}}
-				onKeyDown={(e) => {
-					if (e.code === 'Enter') {
+				onKeyUp={(e) => {
+					if (e.key === 'Enter') {
 						onUpdateHandler();
 						inputRef.current.blur();
 					}
