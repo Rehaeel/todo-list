@@ -1,16 +1,15 @@
 import { useEffect, useRef, useState } from 'react';
+
 import { fetchDeleteTask, fetchTaskUpdate } from '../../../services';
 import styles from './task.module.css';
 import autosize from 'autosize';
 
 const Task = ({ task, setTasks, setIsEditingTask }) => {
 	const [initValue, setInitValue] = useState(task.zadanie);
-	const [valueChanged, setValueChanged] = useState(false);
 	const [showUpdateBtn, setShowUpdateBtn] = useState(false);
 	const inputRef = useRef();
 
 	const onUpdateHandler = () => {
-		setValueChanged(true);
 		const submitTask = {
 			...task,
 			zadanie: inputRef.current.value,
@@ -20,7 +19,6 @@ const Task = ({ task, setTasks, setIsEditingTask }) => {
 			[...prevTasks].map((t) => (t.id === task.id ? submitTask : t))
 		);
 		setInitValue(inputRef.current.value);
-		// setTimeout(() => setValueChanged(false), 500);
 	};
 
 	useEffect(() => {
@@ -41,6 +39,8 @@ const Task = ({ task, setTasks, setIsEditingTask }) => {
 			className={`task ${styles.task}`}
 			onSubmit={(e) => {
 				e.preventDefault();
+				onUpdateHandler();
+				inputRef.current.blur();
 			}}>
 			<textarea
 				style={{ width: `calc(100% - 25px)` }}
@@ -53,25 +53,14 @@ const Task = ({ task, setTasks, setIsEditingTask }) => {
 					setTimeout(() => {
 						setShowUpdateBtn(false);
 						setIsEditingTask(false);
-						console.log(valueChanged);
-						// if (!valueChanged) inputRef.current.value = initValue;
 					}, 250);
-				}}
-				onKeyDown={(e) => {
-					if (e.key === 'Enter') {
-						onUpdateHandler();
-						inputRef.current.blur();
-					}
 				}}
 				rows={1}
 				ref={inputRef}
 			/>
 
 			{showUpdateBtn ? (
-				<button
-					type='submit'
-					className={styles.ok}
-					onClick={onUpdateHandler}>
+				<button type='submit' className={styles.ok}>
 					✓
 				</button>
 			) : (
