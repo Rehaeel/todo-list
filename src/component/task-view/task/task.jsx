@@ -4,9 +4,24 @@ import styles from './task.module.css';
 import autosize from 'autosize';
 
 const Task = ({ task, setTasks, setIsEditingTask }) => {
-	const [value, setValue] = useState(task.zadanie);
-	const [showTask, setShowTask] = useState(false);
+	const [initValue, setInitValue] = useState(task.zadanie);
+	const [valueChanged, setValueChanged] = useState(false);
+	const [showUpdateBtn, setShowUpdateBtn] = useState(false);
 	const inputRef = useRef();
+
+	const onUpdateHandler = () => {
+		setValueChanged(true);
+		const submitTask = {
+			...task,
+			zadanie: inputRef.current.value,
+		};
+		fetchTaskUpdate(submitTask);
+		setTasks((prevTasks) =>
+			[...prevTasks].map((t) => (t.id === task.id ? submitTask : t))
+		);
+		setInitValue(inputRef.current.value);
+		// setTimeout(() => setValueChanged(false), 500);
+	};
 
 	useEffect(() => {
 		if (inputRef.current !== undefined) {
@@ -14,16 +29,7 @@ const Task = ({ task, setTasks, setIsEditingTask }) => {
 		}
 	}, [inputRef]);
 
-	const onUpdateHandler = () => {
-		const submitTask = {
-			...task,
-			zadanie: value,
-		};
-		fetchTaskUpdate(submitTask);
-		setShowTask(false);
-	};
-
-	const onDeleteHandler = async (id) => {
+	const onDeleteHandler = (id) => {
 		setTasks((prevTasks) =>
 			[...prevTasks].filter((task) => task.id !== id)
 		);
@@ -35,19 +41,21 @@ const Task = ({ task, setTasks, setIsEditingTask }) => {
 			className={`task ${styles.task}`}
 			onSubmit={(e) => {
 				e.preventDefault();
-				onUpdateHandler();
 			}}>
 			<textarea
 				style={{ width: `calc(100% - 25px)` }}
-				value={value}
-				onChange={(e) => setValue(e.target.value)}
+				defaultValue={initValue}
 				onFocus={() => {
-					setShowTask(true);
+					setShowUpdateBtn(true);
 					setIsEditingTask(true);
 				}}
 				onBlur={() => {
-					setShowTask(false);
-					setIsEditingTask(false);
+					setTimeout(() => {
+						setShowUpdateBtn(false);
+						setIsEditingTask(false);
+						console.log(valueChanged);
+						// if (!valueChanged) inputRef.current.value = initValue;
+					}, 250);
 				}}
 				onKeyDown={(e) => {
 					if (e.code === 'Enter') {
@@ -59,21 +67,18 @@ const Task = ({ task, setTasks, setIsEditingTask }) => {
 				ref={inputRef}
 			/>
 
-			{showTask ? (
+			{showUpdateBtn ? (
 				<button
+					type='submit'
 					className={styles.ok}
-					onClick={() => {
-						inputRef.current.blur();
-						onUpdateHandler();
-					}}
-					type='submit'>
+					onClick={onUpdateHandler}>
 					✓
 				</button>
 			) : (
 				<button
+					type='button'
 					className={styles.delete}
-					onClick={() => onDeleteHandler(task.id)}
-					type='button'>
+					onClick={() => onDeleteHandler(task.id)}>
 					X
 				</button>
 			)}

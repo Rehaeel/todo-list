@@ -19,7 +19,9 @@ export const fetchPostTask = async (value) =>
 export const fetchTaskUpdate = async (task) =>
 	await axios.post(
 		`${process.env.REACT_APP_DB_ENDPOINT}/zadanie/${task.id}`,
-		{ zadanie: task.zadanie }
+		{
+			zadanie: task.zadanie,
+		}
 	);
 
 export const fetchDeleteTask = async (id) =>
