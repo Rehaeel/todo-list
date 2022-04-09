@@ -44,12 +44,12 @@ function App() {
 		// setInterval(() => {
 		// 	fetchData().then((res) => setFetchedTasks(res.data.reverse()));
 		// }, 2000);
-		if (inputRef)
-			if (inputRef.current)
-				inputRef.current.addEventListener('keyup', (e) => {
-					setValue(e.code);
-				});
 	}, []);
+	if (inputRef)
+		if (inputRef.current)
+			inputRef.current.addEventListener('keydown', (e) =>
+				setValue(e.code)
+			);
 
 	useEffect(() => {
 		if (location.pathname === '/' && areTasksFetched && !isEditingTask) {
