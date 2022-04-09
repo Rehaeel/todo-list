@@ -47,7 +47,7 @@ function App() {
 	}, []);
 	if (inputRef)
 		if (inputRef.current)
-			inputRef.current.addEventListener('keyup', (e) => setValue(e.code));
+			inputRef.current.addEventListener('keyup', (e) => setValue(e.key));
 
 	useEffect(() => {
 		if (location.pathname === '/' && areTasksFetched && !isEditingTask) {
