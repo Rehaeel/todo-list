@@ -7,9 +7,13 @@ import TaskEntryView from './component/task-entry-view/task-entry-view.jsx';
 import './component/task-view/task-view.css';
 import Task from './component/task-view/task/task.jsx';
 
+import { ReactSpinner } from 'react-spinning-wheel';
+import 'react-spinning-wheel/dist/style.css';
+
 function App() {
 	const navigate = useNavigate();
 	const location = useLocation();
+	const [isAppFetched, setIsAppFetched] = useState(false);
 	const [user, setUser] = useState(false);
 	const [tasks, setTasks] = useState([]);
 	const [areTasksFetched, setAreTasksFetched] = useState(false);
@@ -22,7 +26,10 @@ function App() {
 				.then(() => {
 					setUser(true);
 					navigate('/');
-					fetchData().then((res) => setTasks(res.data.reverse()));
+					fetchData().then((res) => {
+						setTasks(res.data.reverse());
+						setIsAppFetched(true);
+					});
 					setAreTasksFetched(true);
 				})
 				.catch(() => {
@@ -54,33 +61,51 @@ function App() {
 
 	return (
 		<div className='main-renderer'>
-			<Routes>
-				<Route path='/login' element={<Login setUser={setUser} />} />
-				<Route
-					exact
-					path='/'
-					element={
-						user && (
-							<>
-								<TaskEntryView
-									tasks={tasks}
-									setTasks={setTasks}
-								/>
-								<div className='task-view'>
-									{tasks.map((res) => (
-										<Task
-											task={res}
-											setTasks={setTasks}
-											key={res.id}
-											setIsEditingTask={setIsEditingTask}
-										/>
-									))}
-								</div>
-							</>
-						)
-					}
-				/>
-			</Routes>
+			{isAppFetched ? (
+				<Routes>
+					<Route
+						path='/login'
+						element={<Login setUser={setUser} />}
+					/>
+					<Route
+						exact
+						path='/'
+						element={
+							user && (
+								<>
+									<TaskEntryView
+										tasks={tasks}
+										setTasks={setTasks}
+									/>
+									<div className='task-view'>
+										{tasks.map((res) => (
+											<Task
+												task={res}
+												setTasks={setTasks}
+												key={res.id}
+												setIsEditingTask={
+													setIsEditingTask
+												}
+											/>
+										))}
+									</div>
+								</>
+							)
+						}
+					/>
+				</Routes>
+			) : (
+				<div
+					style={{
+						height: '90vh',
+						width: '100%',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+					}}>
+					<ReactSpinner />
+				</div>
+			)}
 		</div>
 	);
 }
