@@ -39,6 +39,7 @@ function App() {
 					setAreTasksFetched(false);
 				});
 		} else {
+			setIsAppFetched(true);
 			setUser(false);
 			navigate('/login');
 			setAreTasksFetched(false);
@@ -65,7 +66,12 @@ function App() {
 				<Routes>
 					<Route
 						path='/login'
-						element={<Login setUser={setUser} />}
+						element={
+							<Login
+								setUser={setUser}
+								setIsAppFetched={setIsAppFetched}
+							/>
+						}
 					/>
 					<Route
 						exact
