@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import styles from './login.module.css';
 
 import sha256 from 'sha256';
@@ -31,6 +31,10 @@ const Login = (props) => {
 				loginRef.current.focus();
 			});
 	};
+
+	useEffect(() => {
+		if (loginRef) if (loginRef.current) loginRef.current.focus();
+	}, [loginRef]);
 
 	return (
 		<div className={styles.container}>
