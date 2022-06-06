@@ -117,5 +117,5 @@ app.get('/user/:email', (req, res) => {
 //////////////////////////////////////////////
 
 app.listen(process.env.PORT, () => {
-	console.log(`My DB run on ${process.env.PORT} port`);
+	console.log(`My DB run on ${process.env.DB_PORT} port`);
 });
