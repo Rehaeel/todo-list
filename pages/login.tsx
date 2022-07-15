@@ -41,7 +41,7 @@ const LoginPage: NextPage = () => {
 
 	return (
 		<>
-			<section className='flex h-screen w-screen flex-col items-center justify-center gap-7'>
+			<section className='flex h-screen w-screen flex-col items-center justify-center gap-7 pb-[20%]'>
 				{isWrongPassword && (
 					<h1 className='text-2xl font-medium text-red-600'>
 						Zły login lub hasło
