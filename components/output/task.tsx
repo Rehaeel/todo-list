@@ -37,7 +37,7 @@ const Task: React.FC<TaskProps> = (props) => {
 			onSubmit={onUpdateHandler}>
 			<textarea
 				className='h-fit min-h-[1em] w-full resize-none border-none bg-transparent py-2 px-4 align-middle text-sm 
-            font-light text-dark-gray-color focus:w-full focus:outline focus:outline-1'
+            font-normal text-dark-gray-color focus:w-full focus:outline focus:outline-1'
 				rows={1}
 				defaultValue={taskValue}
 				onChange={(e) => setTaskValue(e.target.value)}
