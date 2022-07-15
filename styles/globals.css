@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+	body {
+		@apply bg-gray-color;
+	}
+
+	.btn {
+		@apply h-8 w-8 cursor-pointer rounded-lg border-none font-bold text-white;
+	}
+	.zadanie-text {
+		inline-size: 100%;
+	}
+}
