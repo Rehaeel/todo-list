@@ -52,7 +52,7 @@ const Input: React.FC<InputProps> = (props) => {
 					placeholder='dodaj zadanie'
 					value={input}
 					onChange={(e) => setInput(e.target.value)}
-					className='mr-[20px] w-fit flex-grow-[0.8] scale-100 overflow-hidden rounded-xl border
+					className='mr-[20px] w-fit flex-grow-[0.5] scale-100 overflow-hidden rounded-xl border
 					border-dark-gray-color px-[25px] py-[15px] text-sm'
 					disabled={isAdding}
 					ref={inputRef}
