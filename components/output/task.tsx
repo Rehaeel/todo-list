@@ -33,7 +33,7 @@ const Task: React.FC<TaskProps> = (props) => {
 		<form
 			className='grid h-fit min-h-[3em] w-full max-w-[700px] grid-cols-task items-center justify-between 
         gap-4 break-words rounded-2xl border border-dark-gray-color/30 bg-light-gray-color px-4 py-4
-        shadow shadow-dark-gray-color/5'
+        shadow shadow-dark-gray-color/5 odd:bg-white'
 			onSubmit={onUpdateHandler}>
 			<textarea
 				className='h-fit min-h-[1em] w-full resize-none border-none bg-transparent py-2 px-4 align-middle text-sm 
